@@ -38,7 +38,7 @@ class Tuyo implements ITuyo {
         const active:number = this.iterator[activeSymbol]
         const raw = getCurrItem(this.value, active)
         this.iterator[activeSymbol]++
-        return raw;
+        return raw
     }
 
     // #setValue(val:any) {

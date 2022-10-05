@@ -3,7 +3,7 @@ import canEach from './canEach'
 import keys from '../util/keys'
 import values from '../util/values'
 
-function getCurrItem<T>(target:any, active:number):Object|null {
+function getCurrItem(target:any, active:number):Object|null {
     if(!canEach(target)) return null
     if(isArrayLike(target)) {
         return {

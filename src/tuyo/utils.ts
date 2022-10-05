@@ -68,5 +68,5 @@ export {
     minus,
     times,
     div,
-    toFixed
+    toFixed,
 }

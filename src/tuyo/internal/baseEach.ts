@@ -2,10 +2,10 @@ import getType from '../util/getType'
 import keys from '../util/keys'
 import values from '../util/values'
 
-function baseEach(target:any, callback:Function, direction?: string | Function) {
+function baseEach(target:any, callback:Function, direction?: string) {
     const isReverse = direction === 'reverse'
-    const keysArr = keys(target);
-    const valuesArr = values(target);
+    const keysArr = keys(target)
+    const valuesArr = values(target)
     let value
     let i = isReverse ? keysArr.length - 1 : 0
     let end = isReverse ? 0 : keysArr.length

@@ -10,7 +10,7 @@ function arrayHasItem(array:Array<string|number|undefined|null|object>, item:str
             }
         })
     } else {
-        return array.includes(item);
+        return array.includes(item)
     }
     return true
 }

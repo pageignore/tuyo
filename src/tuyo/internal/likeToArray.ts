@@ -2,7 +2,7 @@ import type { Object } from './type'
 import getType from '../util/getType'
 
 function likeToArray(target:any):Array<any> {
-    const type = getType(target);
+    const type = getType(target)
     let res:Array<any> = [];
     if(type === 'array') {
         res = target
@@ -16,7 +16,7 @@ function likeToArray(target:any):Array<any> {
             res.push(raw)
         }
     }
-    return res;
+    return res
 }
 
 export default likeToArray
