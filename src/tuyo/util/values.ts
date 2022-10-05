@@ -6,9 +6,9 @@ function values(target:any):Array<any> {
     if(!target) return []
     let res = lvalues(target)
     const type = getType(target);
-    if(isBaseType(target)) {
-        res = [target]
-    }
+    // if(isBaseType(target)) {
+    //     res = [target]
+    // }
     if(type === 'set' || type === 'map') {
         res = Array.from(target.values())
     }

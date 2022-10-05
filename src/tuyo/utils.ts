@@ -7,6 +7,11 @@ import each from './util/each'
 import reduce from './util/reduce'
 import sort from './util/sort'
 import alphabetIndex from './util/alphabetIndex'
+import plus from './util/plus'
+import minus from './util/minus'
+import times from './util/times'
+import div from './util/div'
+import toFixed from './util/toFixed'
 
 function isType(type:string):Function {
     return (target:any) => {
@@ -58,5 +63,10 @@ export {
     each,
     reduce,
     sort,
-    alphabetIndex
+    alphabetIndex,
+    plus,
+    minus,
+    times,
+    div,
+    toFixed
 }

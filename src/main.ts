@@ -1,5 +1,17 @@
+import Big from 'big.js';
 import { tuyo } from './tuyo'
-import { sort, isSame, keys, values, each, reduce, getType } from './tuyo/utils'
+import { sort, isSame, keys, values, each, reduce, getType, plus } from './tuyo/utils'
+
+const x = new Big(0.1);
+const y = new Big(0.2);
+const z = x.plus(y)
+// console.log(z.toNumber(), 'zz')
+
+// console.log(1.005.toFixed(2), 'num')
+// console.log(new Big(1.005).toFixed(2), 'num')
+
+let res = plus(0.1, 0.2)
+console.log(res, 'res')
 
 const str = 'hello world'
 const num = 520

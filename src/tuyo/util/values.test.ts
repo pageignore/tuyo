@@ -1,0 +1,22 @@
+import { describe, it, expect } from 'vitest'
+import values from './values'
+describe('values', () => {
+    it('Parameter is empty', async() => {expect(values()).toEqual([])})
+    it.concurrent('undefined', async() => {expect(values(undefined)).toEqual([])})
+    it.concurrent('null', async() => {expect(values(null)).toEqual([])})
+    it.concurrent('boolean true', async() => {expect(values(true)).toEqual([])})
+    it.concurrent('boolean false', async() => {expect(values(false)).toEqual([])})
+    it.concurrent('string empty', async() => {expect(values('')).toEqual([])})
+    it.concurrent('number 0', async() => {expect(values(0)).toEqual([])})
+    it.concurrent('number 100', async() => {expect(values(100)).toEqual([])})
+    it.concurrent('array []', async() => {expect(values([])).toEqual([])})
+    it.concurrent('object {}', async() => {expect(values({})).toEqual([])})
+    it.concurrent('set {}', async() => {expect(values(new Set())).toEqual([])})
+    it.concurrent('map {}', async() => {expect(values(new Map())).toEqual([])})
+    it.concurrent('array [1,2,3]', async() => {expect(values([1,2,3])).toEqual([1,2,3])})
+    it.concurrent('array [1,2,,3]', async() => {expect(values([1,2,,3])).toEqual([1,2,undefined,3])})
+    it.concurrent('object', async() => {expect(values({'z': 1, 'a': 99})).toEqual([1, 99])})
+    it.concurrent('set [1,2,3]', async() => {expect(values(new Set([1,2,3]))).toEqual([1, 2, 3])})
+    it.concurrent('map', async() => {expect(values(new Map([['a', 1], ['b', 1]]))).toEqual([1, 1])})
+    it.concurrent('map', async() => {expect(values(new Map([['c', 1],['a', 1], ['b', 1]]))).toEqual([1, 1, 1])})
+})
