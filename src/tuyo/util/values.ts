@@ -1,6 +1,6 @@
 import lvalues from 'lodash/values'
 import getType from './getType'
-import isBaseType from './isBaseType'
+// import isBaseType from './isBaseType'
 
 function values(target:any):Array<any> {
     if(!target) return []
