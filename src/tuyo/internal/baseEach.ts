@@ -2,7 +2,7 @@ import getType from '../util/getType'
 import keys from '../util/keys'
 import values from '../util/values'
 
-function baseEach(target:any, callback:Function, direction?: string) {
+function baseEach(target:any, callback:Function, direction?: string | Function) {
     const isReverse = direction === 'reverse'
     const keysArr = keys(target)
     const valuesArr = values(target)

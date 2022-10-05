@@ -14,7 +14,10 @@ let res = plus(0.1, 0.2)
 console.log(res, 'res')
 
 const str = 'hello world'
-const num = 520
+const num = '0.1'
+const tt = tuyo(num)
+tt.plus(0.2).plus(1).plus(1).plus(1).plus(1).minus(1).toFixed(0)
+console.log(tt, 't')
 const obj = {a:1, b:2, c:3}
 const arr = [1,22,3,44,5,'6', obj]
 const set = new Set([1, '2', {a: 3}])
