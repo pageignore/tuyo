@@ -15,7 +15,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": false,
     "skipLibCheck": true,
-    "outDir": "dist_utils",
+    "outDir": "dist_index",
     "declaration": true,
   },
   "include": ["src/tuyo"],
