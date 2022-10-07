@@ -13,6 +13,7 @@ import toFixed from './util/toFixed'
 import has from './util/has'
 import indexOf from './util/indexOf'
 import sort from './util/sort'
+import isSameType from './util/isSameType'
 import isSame from './util/isSame'
 
 const activeSymbol = Symbol()
@@ -58,6 +59,10 @@ class Tuyo implements ITuyo {
     indexOf(item:any) {
         if(this.#type !== 'array') throw Error('Can only indexOf on Array')
         return indexOf(this.#value, item)
+    }
+
+    isSameType(target:any) {
+        return isSameType(this.#value, target)
     }
 
     isSame(target:any) {

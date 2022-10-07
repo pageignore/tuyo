@@ -1,7 +1,19 @@
 import Big from 'big.js';
 import { tuyo } from './tuyo'
-import { has, sort, isSame, keys, values, each, reduce, getType, plus } from './tuyo/utils'
+import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from './tuyo/utils'
 
+// const sort_data = [new Set([10, 22]),1, '2', '20', 10, {a: 1, b:2, c: 3}, {a: 10, b:20}, new Set([1, 2])]
+// sort(sort_data, (a, b) => b - a, {
+//   'string': 0,
+//   'object': 1,
+//   'set': 2,
+//   'number': 3,
+// })
+// console.log(sort_data, 'ss')
+const resss = reduce([1,2,3,4,5], ((prev, curr, currIndex, valueType, data) => {
+    return prev + curr
+}),10)
+console.log(resss, 'res')
 
 const number = 0.1
 const string = 'abc'
@@ -9,6 +21,9 @@ const array = [10, 20, [1, 2, 3], 2, 1]
 const object = {a: 1, b:2, c: 3}
 const set = new Set([1, 2, 3])
 const map = new Map([['a', 1], ['b', 2], ['c', 3]])
+
+console.log(1.005.toFixed(2))
+console.log(toFixed(1.005, 2))
 
 const ress = tuyo(number).plus(0.2).minus(0.2).times(100).div(100).toFixed(2).value
 
@@ -22,8 +37,6 @@ while(!_array.iterator.isDone()) {
   const raw = _array.iterator.next()
   console.log(raw)
 }
-
-console.log(getType(NaN))
 
 // console.log(array.indexOf([1, 2, 3]))
 // console.log(tuyo(array).indexOf([1, 3, 2]), 'ss')

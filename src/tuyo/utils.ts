@@ -1,4 +1,5 @@
 import isSame from './util/isSame'
+import isSameType from './util/isSameType'
 import getType from './util/getType'
 import keys from './util/keys'
 import values from './util/values'
@@ -61,6 +62,7 @@ export {
     isHTMLCollection,
     getType,
     isBaseType,
+    isSameType,
     isSame,
     keys,
     values,

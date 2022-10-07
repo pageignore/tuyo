@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import alphabetIndex from './alphabetIndex'
 describe('alphabetIndex', () => {
 
-  it('type not string', async() => {expect(alphabetIndex(0)).toBeNull()})
-  it.concurrent('Parameter is empty', async() => {expect(alphabetIndex()).toBeNull()})
+  it('type not string', async() => {expect(alphabetIndex(0)).toEqual(-1)})
+  it.concurrent('Parameter is empty', async() => {expect(alphabetIndex()).toEqual(-1)})
   it.concurrent('a', async() => {expect(alphabetIndex('a')).toEqual(0)})
   it.concurrent('b', async() => {expect(alphabetIndex('b')).toEqual(1)})
   it.concurrent('c', async() => {expect(alphabetIndex('c')).toEqual(2)})
@@ -32,5 +32,5 @@ describe('alphabetIndex', () => {
   it.concurrent('z', async() => {expect(alphabetIndex('z')).toEqual(25)})
   it.concurrent('Multiple letters', async() => {expect(alphabetIndex('abzy')).toEqual(0)})
   it.concurrent('Multiple letters', async() => {expect(alphabetIndex('abzy', 3)).toEqual(24)})
-  it.concurrent('index is not', async() => {expect(alphabetIndex('abzy', 4)).toEqual(null)})
+  it.concurrent('index is not', async() => {expect(alphabetIndex('abzy', 4)).toEqual(-1)})
 })
