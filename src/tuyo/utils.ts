@@ -14,6 +14,7 @@ import times from './util/times'
 import div from './util/div'
 import toFixed from './util/toFixed'
 import has from './util/has'
+import indexOf from './util/indexOf'
 
 function isType(type:string):Function {
     return (target:any) => {
@@ -76,4 +77,5 @@ export {
     div,
     toFixed,
     has,
+    indexOf
 }
