@@ -136,7 +136,7 @@ class Tuyo implements ITuyo {
 
 }
 
-export function tuyo(parameter:any):Object {
+export default function tuyo(parameter:any):Object {
     return new Tuyo(parameter)
 }
  

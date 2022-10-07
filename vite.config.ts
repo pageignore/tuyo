@@ -7,11 +7,11 @@ import typescript from '@rollup/plugin-typescript';
 export default defineConfig({
   build: {
     target: 'es2015',
-    outDir: 'dist_index',
+    outDir: 'dist_utils',
     lib: {
-      entry: path.resolve(__dirname, './src/tuyo/index.ts'),
-      name: 'index',
-      fileName: 'index',
+      entry: path.resolve(__dirname, './src/tuyo/utils.ts'),
+      name: 'utils',
+      fileName: 'utils',
       formats:['umd', 'es']
     },
     rollupOptions: {

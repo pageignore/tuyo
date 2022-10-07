@@ -1,6 +1,7 @@
 import Big from 'big.js';
-import { tuyo } from './tuyo'
-import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from './tuyo/utils'
+import tuyo from 'tuyo'
+import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from 'tuyo/utils'
+
 
 // const sort_data = [new Set([10, 22]),1, '2', '20', 10, {a: 1, b:2, c: 3}, {a: 10, b:20}, new Set([1, 2])]
 // sort(sort_data, (a, b) => b - a, {

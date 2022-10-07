@@ -7,7 +7,7 @@ Provides additional, enhanced & unified operations for various data types in Jav
 ## Usage
 
 ```javascript
-import { tuyo } from 'tuyo'
+import tuyo from 'tuyo'
 
 // 0.1 + 0.2 = 0.30000000000000004
 const number = 0.1
@@ -175,6 +175,7 @@ data.plus(1).minus(1).times(1).div(1).toFixed(2).value // 0.10
 ```
 
 ## Utils
+
 ```javascript
 import {
     isUndefined,
@@ -424,3 +425,6 @@ cosnt res = reduce([1,2,3,4,5], ((prev, curr, currIndex, valueType, data) => {
 // res ==> 25
 
 ```
+
+## Test
+![TEST](https://chuantu.xyz/t6/742/1665169290x2890237562.png)
