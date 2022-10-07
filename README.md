@@ -59,9 +59,9 @@ const arr = [20, 'computer', '15', 'amazon', 1, '2', 'zoom' , 10, '15', '4', 'ap
 const _array = tuyo(arr)
 _array.sort()
 // _array.value ==> [1, 10, 20, '2', '4', '15', '150', 'amazon', 'apple', 'computer', 'zoom']
-_array.sort((a, b) => b -a)
+_array.sort((a, b) => b - a)
 // _array.value ==> ['zoom', 'computer', 'apple', 'amazon', '150', '15', '4', '2', 20, 10, 1]
-_array.sort((a, b) => b -a, {
+_array.sort((a, b) => b - a, {
   'number': 0,
   'string': 1
 })
