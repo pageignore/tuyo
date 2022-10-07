@@ -11,7 +11,9 @@ import times from './util/times'
 import div from './util/div'
 import toFixed from './util/toFixed'
 import has from './util/has'
+import indexOf from './util/indexOf'
 import sort from './util/sort'
+import isSame from './util/isSame'
 
 const activeSymbol = Symbol()
 
@@ -21,6 +23,7 @@ class Tuyo implements ITuyo {
     #length:number
     iterator:Object = {
         [activeSymbol]: 0,
+        isDone: this.#isDone.bind(this),
         next: this.#next.bind(this)
     }
 
@@ -33,14 +36,13 @@ class Tuyo implements ITuyo {
         this[`is${_typeForUpper}`] = true
     }
 
-    each(callback:Function, direction?: string | Function) {
+    each(callback:Function, direction?: string | ((a: any, b: any, atype: string, btype: string) => number)) {
         each(this.value, callback, direction)
         return this
     }
 
     reduce(callback:Function, initValue?:any) {
-        reduce(this.value, callback, initValue)
-        return this
+        return reduce(this.value, callback, initValue)
     }
 
     sort(callback?:((a: any, b: any, atype: string, btype: string) => number) | undefined, orderConfig?:Object) {
@@ -50,6 +52,16 @@ class Tuyo implements ITuyo {
 
     has(item:any) {
         return has(this.#value, item)
+    }
+    
+
+    indexOf(item:any) {
+        if(this.#type !== 'array') throw Error('Can only indexOf on Array')
+        return indexOf(this.#value, item)
+    }
+
+    isSame(target:any) {
+        return isSame(this.#value, target)
     }
 
     plus(val:string|number) {
@@ -80,6 +92,10 @@ class Tuyo implements ITuyo {
         const res = toFixed(this.#value, dp)
         this.#setValue(res)
         return this
+    }
+
+    #isDone():boolean {
+        return this.iterator[activeSymbol] >= this.#length
     }
 
     #next():Object|null {

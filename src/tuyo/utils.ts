@@ -42,11 +42,11 @@ const isRegExp = isType('RegExp')
 const isHTMLCollection = isType('HTMLCollection')
 
 export {
+    isUndefined,
+    isNull,
+    isBoolean,
     isNumber,
     isString,
-    isBoolean,
-    isNull,
-    isUndefined,
     isArray,
     isObject,
     isFunction,

@@ -1,11 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import sort from './sort'
 describe('sort', () => {
-    it('Parameter is empty', async() => {expect(sort()).toEqual([])})
-    it.concurrent('boolean true', async() => {expect(sort(true)).toEqual([])})
-    it.concurrent('boolean false', async() => {expect(sort(false)).toEqual([])})
-    it.concurrent('object {}', async() => {expect(sort({})).toEqual([])})
-    it.concurrent('object', async() => {expect(sort({'a': 1})).toEqual([])})
     it.concurrent('[]', async() => {expect(sort([])).toEqual([])})
     it.concurrent('[number]', async() => {expect(sort([1,100,2])).toEqual([1,2,100])})
     it.concurrent('[string]', async() => {expect(sort(['1','100','2'])).toEqual(['1','2','100'])})
