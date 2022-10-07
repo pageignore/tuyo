@@ -1,8 +1,8 @@
 import Big from 'big.js'
 
-function toFixed(target:string|number, dp:number = 2):number {
+function toFixed(target:string|number, dp:number = 2) {
     const x = Big(target)
-    return Number(x.toFixed(dp))
+    return x.toFixed(dp)
 }
 
 export default toFixed

@@ -1,0 +1,41 @@
+{
+    "name": "tuyo",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "build:tuyo": "unbuild",
+      "preview": "vite preview",
+      "test": "vitest",
+      "coverage": "vitest run --coverage"
+    },
+    "devDependencies": {
+      "@rollup/plugin-typescript": "^8.5.0",
+      "@types/big.js": "^6.1.6",
+      "@types/lodash": "^4.14.186",
+      "fast-glob": "^3.2.12",
+      "rollup-plugin-dts": "^4.2.2",
+      "rollup-plugin-typescript2": "^0.34.1",
+      "typescript": "^4.6.4",
+      "unbuild": "^0.8.11",
+      "vite": "^3.1.0",
+      "vitest": "^0.23.4"
+    },
+    "dependencies": {
+      "big.js": "^6.2.1",
+      "lodash": "^4.17.21"
+    },
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs"
+      }
+    },
+    "main": "./dist/index.cjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+      "dist"
+    ]
+  }

@@ -1,4 +1,4 @@
-import Big from 'big.js/big.js'
+import Big from 'big.js'
 
 function plus(v1:string|number, v2:string|number) {
     const x = Big(v1)

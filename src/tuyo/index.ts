@@ -10,11 +10,13 @@ import minus from './util/minus'
 import times from './util/times'
 import div from './util/div'
 import toFixed from './util/toFixed'
+import has from './util/has'
+import sort from './util/sort'
 
 const activeSymbol = Symbol()
 
 class Tuyo implements ITuyo {
-    #value:string
+    #value:any
     #type:string
     #length:number
     iterator:Object = {
@@ -39,6 +41,15 @@ class Tuyo implements ITuyo {
     reduce(callback:Function, initValue?:any) {
         reduce(this.value, callback, initValue)
         return this
+    }
+
+    sort(callback?:((a: any, b: any, atype: string, btype: string) => number) | undefined, orderConfig?:Object) {
+        if(this.#type !== 'array') throw Error('Can only Sort on Array')
+        sort(this.#value, callback, orderConfig)
+    }
+
+    has(item:any) {
+        return has(this.#value, item)
     }
 
     plus(val:string|number) {
@@ -79,6 +90,9 @@ class Tuyo implements ITuyo {
     }
 
     #setValue(value:any) {
+        const oldType = getTypeUpper(this.#value)
+        // @ts-ignore
+        delete this[`is${oldType}`]
         this.#value = value;
         this.#type = getType(value)
         this.#length = getLength(value)

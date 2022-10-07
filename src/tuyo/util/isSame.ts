@@ -7,7 +7,7 @@ import sort from './sort'
 
 function isSame(v1:any, v2:any):boolean {
     const typeOfV1 = getType(v1)
-    const typeOfV2 = getType(v1)
+    const typeOfV2 = getType(v2)
     if(typeof v1 !== typeof v2 || typeOfV1 !== typeOfV2) return false
     if(isObjectLike(v1)) {
         if(v1 === v2) {

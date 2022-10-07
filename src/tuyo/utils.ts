@@ -12,6 +12,7 @@ import minus from './util/minus'
 import times from './util/times'
 import div from './util/div'
 import toFixed from './util/toFixed'
+import has from './util/has'
 
 function isType(type:string):Function {
     return (target:any) => {
@@ -19,7 +20,10 @@ function isType(type:string):Function {
     }
 }
 
-const isNumber = isType('Number')
+function isNumber(target: any) {
+    return getType(target) === 'number'
+}
+
 const isString = isType('String')
 const isBoolean = isType('Boolean')
 const isNull = isType('Null')
@@ -69,4 +73,5 @@ export {
     times,
     div,
     toFixed,
+    has,
 }
