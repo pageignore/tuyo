@@ -54,13 +54,18 @@ _array.isSame([1, 2, [3, 2, 1], 10, 20]) // true
 _array.isSameType([]) // true
 _array.isSameType({}) // false
 
-// sort [number|string|array|object|set|map...] Please see the utils below for details
+// sort [number|string|array|object|set|map...] Please see the 'Utils' below for details
 const arr = [20, 'computer', '15', 'amazon', 1, '2', 'zoom' , 10, '15', '4', 'apple'];
 const _array = tuyo(arr)
 _array.sort()
 // _array.value ==> [1, 10, 20, '2', '4', '15', '150', 'amazon', 'apple', 'computer', 'zoom']
 _array.sort((a, b) => b -a)
 // _array.value ==> ['zoom', 'computer', 'apple', 'amazon', '150', '15', '4', '2', 20, 10, 1]
+_array.sort((a, b) => b -a, {
+  'number': 0,
+  'string': 1
+})
+// _array.value ==> [20, 10, 1, '150', '15', '4', '2', 'zoom', 'computer', 'apple', 'amazon']
 
 // if use array.sort()
 // arr.sort((a, b) => a - b)
