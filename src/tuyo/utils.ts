@@ -1,3 +1,4 @@
+import isType from './internal/isType'
 import isSame from './util/isSame'
 import isSameType from './util/isSameType'
 import getType from './util/getType'
@@ -16,11 +17,8 @@ import toFixed from './util/toFixed'
 import has from './util/has'
 import indexOf from './util/indexOf'
 
-function isType(type:string):Function {
-    return (target:any) => {
-        return Object.prototype.toString.call(target) === `[object ${type}]`
-    }
-}
+import { isFunction } from './util/isFunction'
+import { isArray } from './util/isArray'
 
 function isNumber(target: any) {
     return getType(target) === 'number'
@@ -30,9 +28,7 @@ const isString = isType('String')
 const isBoolean = isType('Boolean')
 const isNull = isType('Null')
 const isUndefined = isType('Undefined')
-const isArray = isType('Array')
 const isObject = isType('Object')
-const isFunction = isType('Function')
 const isSet = isType('Set')
 const isMap = isType('Map')
 const isWeakSet = isType('WeakSet')

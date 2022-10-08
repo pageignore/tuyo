@@ -11,8 +11,11 @@ node_modules
 dist
 dist_index
 dist_utils
+dist_same
 dist-ssr
 *.local
+
+src/isSameValue
 
 # Editor directories and files
 .vscode/*

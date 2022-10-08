@@ -1,6 +1,7 @@
 import getType from '../util/getType'
 import sort from '../util/sort'
-import { isFunction, isArray } from '../utils'
+import { isFunction } from '../util/isFunction'
+import { isArray } from '../util/isArray'
 import cloneDeep from 'lodash/cloneDeep'
 
 function baseFor(target:any, callback:Function, direction?: string | ((a: any, b: any, atype: string, btype: string) => number)) {

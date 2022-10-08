@@ -1,6 +1,14 @@
 import Big from 'big.js';
 import tuyo from 'tuyo'
-import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed, indexOf } from 'tuyo/utils'
+import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from 'tuyo/utils'
+
+import isSameValue from './isSameValue'
+
+console.log(NaN === NaN)
+const array1 = [1,'z',[100, ['a', 'b']], {a: 'z'}, new Set([new Map([['a', 'z']])]), new Map([['a', [1,2,3],['b', new Set([])]]])]
+const array2 = [new Map([['a', [3,2,1],['b', new Set([])]]]), [100, ['a', 'b']], {a: 'z'}, new Set([new Map([['a', 'z']])]), 1,'z']
+const e = isSameValue(array1, array2)
+console.log(e, 'ee')
 
 
 // const sort_data = [new Set([10, 22]),1, '2', '20', 10, {a: 1, b:2, c: 3}, {a: 10, b:20}, new Set([1, 2])]
