@@ -27,16 +27,20 @@ const objectLikeCompare: Object = {
     'map': baseObjectLikeCompare,
 }
 
+function isNumber(target: number | undefined | null): boolean {
+    return typeof target === 'number'
+}
+
 function baseCallback(a:any, b:any) {
     return a - b
 }
 
-function getOrder(type: string, orderConfig:Object = {}) {
-    let order  = orderConfig[type] || Order[type]
-    return typeof order === 'number' ? order : 999
+function getTypeOrder(type: string, orderConfig:Object = {}) {
+    let order  = isNumber(orderConfig[type]) ? orderConfig[type] : Order[type]
+    return isNumber(order) ? order : 999
 }
 
-function stringCompare(a: string, b:string, cb:((a: any, b: any, atype: string, btype: string) => number), orderConfig?:Object) {
+function stringCompare(a: string, b:string, cb:((a: any, b: any, compare: Function, atype: string, btype: string) => number), orderConfig?:Object) {
     const aNumber = Number(a)
     const bNumber = Number(b)
     let res = 0
@@ -58,42 +62,42 @@ function stringCompare(a: string, b:string, cb:((a: any, b: any, atype: string, 
         }
     } else if (!isNaN(aNumber) && !isNaN(bNumber)) {
         // '12'
-        res = cb(aNumber, bNumber, 'string', 'string')
+        res = cb(aNumber, bNumber, baseCompare, 'string', 'string')
     } else {
         // 'abc' '12'
         const aType = isNaN(aNumber) ? 'string' : 'number'
         const bType = isNaN(bNumber) ? 'string' : 'number'
-        const aOrder = getOrder(aType, orderConfig)
-        const bOrder = getOrder(bType, orderConfig)
-        res = cb(aOrder, bOrder, 'order', 'order')
+        const aOrder = getTypeOrder(aType, orderConfig)
+        const bOrder = getTypeOrder(bType, orderConfig)
+        res = cb(aOrder, bOrder, baseCompare, 'order', 'order')
     }
     return res
 }
 
-function arrayCompare(a: Array<any>, b:Array<any>, cb:((a: any, b: any, atype: string, btype: string) => number)) {
+function arrayCompare(a: Array<any>, b:Array<any>, cb:((a: any, b: any, compare: Function, atype: string, btype: string) => number), orderConfig?:Object) {
     let aLen = getLength(a);
     let bLen = getLength(b);
     let res = 0
-    sort(a, cb)
-    sort(b, cb)
+    sort(a, cb, orderConfig)
+    sort(b, cb, orderConfig)
     if(aLen === bLen) {
         for(let i in a) {
-            res = baseCompare(a[i], b[i], cb);
+            res = baseCompare(a[i], b[i], cb, orderConfig);
             if(res > 0 || res < 0) break
         }
     } else {
-        res = cb(aLen, bLen, 'array', 'array')
+        res = cb(aLen, bLen, baseCompare, 'array', 'array')
     }
     return res
 }
 
-function baseObjectLikeCompare(a: any, b:any, cb:((a: any, b: any, atype: string, btype: string) => number)) {
+function baseObjectLikeCompare(a: any, b:any, cb:((a: any, b: any, compare: Function, atype: string, btype: string) => number)) {
     let aLen = getLength(a)
     let bLen = getLength(b)
     const aType = getType(a)
     const bType = getType(b)
     let res = 0
-    res = cb(a, b, aType, bType);
+    res = cb(a, b, baseCompare, aType, bType);
     if(isNaN(res) || res === 0) {
         res = 0
         if(aLen === bLen) {
@@ -113,36 +117,36 @@ function baseObjectLikeCompare(a: any, b:any, cb:((a: any, b: any, atype: string
                     }
                 }
             } else {
-                res = cb(aKeys.length, bKeys.length, 'length', 'length')
+                res = cb(aKeys.length, bKeys.length, baseCompare, 'length', 'length')
             }
         } else {
-            res = cb(aLen, bLen, 'length', 'length')
+            res = cb(aLen, bLen, baseCompare, 'length', 'length')
         }
     }
     return res;
 }
 
-function baseCompare(a:any, b:any, cb:((a: any, b: any, atype: string, btype: string) => number), orderConfig?:Object):number {
+function baseCompare(a:any, b:any, cb:((a: any, b: any, compare: Function, atype: string, btype: string) => number), orderConfig?:Object):number {
     const aType = getType(a)
     const bType = getType(b)
-    const aOrder = getOrder(aType, orderConfig)
-    const bOrder = getOrder(bType, orderConfig)
-
+    const aOrder = getTypeOrder(aType, orderConfig)
+    const bOrder = getTypeOrder(bType, orderConfig)
     let res = 0
     if(aType === bType) {
         if(isObjectLike(a)) {
             res = objectLikeCompare[aType](a, b, cb, orderConfig)
         } else {
-            res = aType === 'string' ? stringCompare(a, b, cb, orderConfig) : cb(a, b, aType, bType)
+            res = aType === 'string' ? stringCompare(a, b, cb, orderConfig) : cb(a, b, baseCompare, aType, bType)
         }
     } else {
-        res = cb(aOrder, bOrder, 'order', 'order')
+        // if has orderConfig, fixed order.  Ascending
+        res = orderConfig ? aOrder - bOrder : baseCompare(aOrder, bOrder, cb)
     }
     return res || 0
 }
 
 
-function sort(target:Array<any>, callback?:((a: any, b: any, atype: string, btype: string) => number) | undefined, orderConfig?:Object) {
+function sort(target:Array<any>, callback?:((a: any, b: any, compare: Function, atype: string, btype: string) => number) | undefined, orderConfig?:Object) {
     if(getType(target) !== 'array') throw Error('Can only indexOf on Array')
 
     const cb = callback || baseCallback

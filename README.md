@@ -374,7 +374,7 @@ indexOf([1,2,3,[1]], [1]) // 3
 
 /**
  * @param {array<number|string|array|object|set|map...>} data.
- * @param {function} comparison default: (a, b) => a - b
+ * @param {function} comparison default: (a:any, b:any, compare:Function, aType:string, bType:string) => a - b
  * @param {object} orderConfig
  * default: {
  * 'null': 0,

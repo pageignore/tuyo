@@ -7,9 +7,9 @@ import typescript from '@rollup/plugin-typescript';
 export default defineConfig({
   build: {
     target: 'es2015',
-    outDir: 'dist_index',
+    outDir: 'dist_sort',
     lib: {
-      entry: path.resolve(__dirname, './src/tuyo/index.ts'),
+      entry: path.resolve(__dirname, './src/tuyo/util/sort.ts'),
       name: 'index',
       fileName: 'index',
       formats:['umd', 'es']
