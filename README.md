@@ -392,25 +392,48 @@ indexOf([1,2,3,[1]], [1]) // 3
  * @returns {array} Returns the sorted array and mutates the original array at the same time.
  * 
  */
-const sort_data = [new Set([10, 22]),1, '2', '20', 10, {a: 1, b:2, c: 3}, {a: 10, b:20}, new Set([1, 2])]
-sort(sort_data)
-console.log(sort_data)
-// [1, 10, '2', '20', {a: 10: b: 20}, {a:1, b:2, c:3}, Set([1,2]), Set([10, 22])]
+const arr = [{name: 'ignore'}, 1, 'z', 11, 'b', '5', '1']
 
 // comparison function
-sort(sort_data, (a, b) => b - a)
-console.log(sort_data)
-// [Set([10, 22]), Set([1,2]), {a:1, b:2, c:3}, {a: 10: b: 20}, '20', '2', 10, 1]
+sort(arr, (a, b) => b - a)
+// arr ===> [{name: 'ignore'}, 'z', 'b', '5', '1', 11, 1]
 
-// order config
-sort(sort_data, (a, b) => b - a, {
-  'string': 0,
-  'object': 1,
-  'set': 2,
-  'number': 3,
+// Configuration Type Order
+sort(arr, (a, b) => b - a, {
+    number: 0,
+    object: 1,
+    string: 2
 })
-console.log(sort_data)
-// ['20', '2', 10, 1, Set([10, 22]), Set([1,2]), {a:1, b:2, c:3}, {a: 10: b: 20}]
+// arr ===> [11, 1, {name: 'ignore'}, 'z', 'b', '5', '1']
+
+// Compare an attribute value
+const arr = [
+    {name: 'Chris', age: 33},
+    {name: 'Allen', age: '20'},
+    {name: 'StephenA', age: '26'},
+    {name: 'Zoey', age: 29},
+    {name: 'StephenB', age: '16'}
+]
+
+// If the value is a number or a number-like string, can be directly compared
+sort(arr, (a, b) => a.age - b.age)
+// arr ===> [
+//     {name: 'StephenB', age: '16'},
+//     {name: 'Allen', age: '20'},
+//     {name: 'StephenA', age: '26'},
+//     {name: 'Zoey', age: 29},
+//     {name: 'Chris', age: 33},
+// ]
+
+// If the value is not a number, need to use the comparison function in the callback to compare.
+sort(arr, (a, b, compare) => compare(a.name, b.name, (a, b) => b - a))
+// arr ===> [
+//     {name: 'Zoey', age: 29},
+//     {name: 'StephenB', age: '16'},
+//     {name: 'StephenA', age: '26'},
+//     {name: 'Chris', age: 33},
+//     {name: 'Allen', age: '20'},
+// ]
 
 /**
  * @param {*} data.

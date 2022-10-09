@@ -2,7 +2,6 @@ import Big from 'big.js';
 import tuyo from './tuyo'
 import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from './tuyo/utils'
 
-import isSameValue from './isSameValue'
 
 // const arr = [
 //     { age: '55', name: 'mary'},
