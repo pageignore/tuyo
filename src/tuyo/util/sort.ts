@@ -99,6 +99,7 @@ function baseObjectLikeCompare(a: any, b:any, cb:((a: any, b: any, compare: Func
     const bType = getType(b)
     let res = 0
     res = cb(a, b, baseCompare, aType, bType);
+    // {} - {} well be NaN
     if(isNaN(res) || res === 0) {
         res = 0
         if(aLen === bLen) {
