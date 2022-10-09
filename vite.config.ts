@@ -24,10 +24,10 @@ export default defineConfig({
     }
   },
   plugins: [
-    {
-      ...typescript({
-      }),
-      apply: 'build'
-    }
+    // {
+    //   ...typescript({
+    //   }),
+    //   apply: 'build'
+    // }
   ]
 })
