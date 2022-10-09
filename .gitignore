@@ -12,6 +12,7 @@ dist
 dist_index
 dist_utils
 dist_same
+dist_sort
 dist-ssr
 *.local
 

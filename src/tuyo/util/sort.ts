@@ -149,7 +149,7 @@ function baseCompare(a:any, b:any, cb:((a: any, b: any, compare: Function, atype
 
 
 function sort(target:Array<any>, callback?:((a: any, b: any, compare: Function, atype: string, btype: string) => number), orderConfig?:Object) {
-    if(getType(target) !== 'array') throw Error('Can only indexOf on Array')
+    if(getType(target) !== 'array') throw Error('Can only sort on Array')
 
     const cb = callback || baseCallback
 
