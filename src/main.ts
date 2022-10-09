@@ -1,6 +1,6 @@
 import Big from 'big.js';
 import tuyo from './tuyo'
-import { has, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from './tuyo/utils'
+import { isUndefined, isBoolean, isFunction, sort, isSame, keys, values, each, reduce, getType, plus, minus, times, div,toFixed } from './tuyo/utils'
 
 
 // const arr = [
@@ -76,3 +76,14 @@ sort(arr)
 console.log(arr)
 
 const sameres = isSame(new Date('2022-02-02'), new Date('2022-02-02'))
+
+async function fn() {
+    console.log(123)
+}
+
+console.log(typeof true)
+console.log(isUndefined(void 0), '?')
+console.log(isBoolean(void 0), '?ss')
+
+const res = isFunction(fn)
+console.log(res)

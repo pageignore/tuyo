@@ -1,3 +1,5 @@
-import isType from '../internal/isType'
+function isFunction(target:any):boolean {
+    return typeof target === 'function'
+}
 
-export const isFunction = isType('Function')
+export default isFunction

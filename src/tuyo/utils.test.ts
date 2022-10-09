@@ -80,6 +80,7 @@ describe('alphabetIndex', () => {
   it.concurrent('isUndefined false', async() => {expect(isUndefined(false)).toEqual(false)})
   it.concurrent('isUndefined null', async() => {expect(isUndefined(null)).toEqual(false)})
   it.concurrent('isUndefined undefined', async() => {expect(isUndefined(undefined)).toEqual(true)})
+  it.concurrent('isUndefined undefined', async() => {expect(isUndefined(void 0)).toEqual(true)})
   it.concurrent('isUndefined "12"', async() => {expect(isUndefined('12')).toEqual(false)})
   it.concurrent('isUndefined "abc"', async() => {expect(isUndefined('abc')).toEqual(false)})
   it.concurrent('isUndefined Symbol', async() => {expect(isUndefined(Symbol())).toEqual(false)})

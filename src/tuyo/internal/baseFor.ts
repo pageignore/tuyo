@@ -1,6 +1,6 @@
 import getType from '../util/getType'
 import sort from '../util/sort'
-import { isFunction } from '../util/isFunction'
+import isFunction from '../util/isFunction'
 import { isArray } from '../util/isArray'
 import cloneDeep from 'lodash/cloneDeep'
 

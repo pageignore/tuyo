@@ -17,17 +17,14 @@ import toFixed from './util/toFixed'
 import has from './util/has'
 import indexOf from './util/indexOf'
 
-import { isFunction } from './util/isFunction'
+import isFunction from './util/isFunction'
+import isBoolean from './util/isBoolean'
+import isUndefined from './util/isUndefined'
+import isNumber from './util/isNumber'
 import { isArray } from './util/isArray'
 
-function isNumber(target: any) {
-    return getType(target) === 'number'
-}
-
 const isString = isType('String')
-const isBoolean = isType('Boolean')
 const isNull = isType('Null')
-const isUndefined = isType('Undefined')
 const isObject = isType('Object')
 const isSet = isType('Set')
 const isMap = isType('Map')
