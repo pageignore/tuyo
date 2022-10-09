@@ -13,6 +13,9 @@ function isSame(v1:any, v2:any):boolean {
         if(v1 === v2) {
             return true
         } else {
+
+            if(typeOfV1 === 'date') return v1.toString() === v2.toString()
+
             let res = true
             const valuesArrOfV1 = values(v1)
             const valuesArrOfV2 = values(v2)

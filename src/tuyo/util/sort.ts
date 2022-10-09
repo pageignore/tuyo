@@ -14,10 +14,11 @@ const Order: Object = {
     'symbol': 3,
     'number': 4,
     'string': 5,
-    'array': 6,
-    'object': 7,
-    'set': 8,
-    'map': 9,
+    'date': 6,
+    'array': 7,
+    'object': 8,
+    'set': 9,
+    'map': 10,
 }
 
 const objectLikeCompare: Object = {
@@ -134,7 +135,8 @@ function baseCompare(a:any, b:any, cb:((a: any, b: any, compare: Function, atype
     let res = 0
     if(aType === bType) {
         if(isObjectLike(a)) {
-            res = objectLikeCompare[aType](a, b, cb, orderConfig)
+            const compareFn = objectLikeCompare[aType] ? objectLikeCompare[aType] : baseObjectLikeCompare
+            res = compareFn(a, b, cb, orderConfig)
         } else {
             res = aType === 'string' ? stringCompare(a, b, cb, orderConfig) : cb(a, b, baseCompare, aType, bType)
         }
@@ -146,7 +148,7 @@ function baseCompare(a:any, b:any, cb:((a: any, b: any, compare: Function, atype
 }
 
 
-function sort(target:Array<any>, callback?:((a: any, b: any, compare: Function, atype: string, btype: string) => number) | undefined, orderConfig?:Object) {
+function sort(target:Array<any>, callback?:((a: any, b: any, compare: Function, atype: string, btype: string) => number), orderConfig?:Object) {
     if(getType(target) !== 'array') throw Error('Can only indexOf on Array')
 
     const cb = callback || baseCallback

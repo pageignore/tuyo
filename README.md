@@ -373,7 +373,7 @@ indexOf([1,2,3,[1]], [1]) // 3
 // [1,2,3,[1]].indexOf([1]) ==> -1
 
 /**
- * @param {array<number|string|array|object|set|map...>} data.
+ * @param {array<any>} data.
  * @param {function} comparison default: (a:any, b:any, compare:Function, aType:string, bType:string) => a - b
  * @param {object} orderConfig
  * default: {
@@ -383,10 +383,11 @@ indexOf([1,2,3,[1]], [1]) // 3
  * 'symbol': 3,
  * 'number': 4,
  * 'string': 5,
- * 'array': 6,
- * 'object': 7,
- * 'set': 8,
- * 'map': 9,
+ * 'date': 6,
+ * 'array': 7,
+ * 'object': 8,
+ * 'set': 9,
+ * 'map': 10,
  * }
  * @returns {array} Returns the sorted array and mutates the original array at the same time.
  * 
